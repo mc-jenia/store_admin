@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store_admin/providers/product_provider.dart';
+import 'package:store_admin/screens/new_product.dart';
 import 'package:store_admin/screens/product_detail_screen.dart';
 import 'package:store_admin/screens/products_screen.dart';
 
@@ -65,6 +66,7 @@ class StoreAdmin extends StatelessWidget {
       routes: {
         ProductScreen.routeName: (context) => const ProductScreen(),
         ProductDetailScreen.routeName: (context) => const ProductDetailScreen(),
+        NewProduct.routeName: (context) => const NewProduct(),
       },
     );
   }

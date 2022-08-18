@@ -33,4 +33,34 @@ class ProductProvider with ChangeNotifier {
       _products = loadedProducts;
     });
   }
+
+  Future<void> addNewProduct(
+      String categoryId,
+      String name,
+      String serialNumber,
+      String description,
+      double price,
+      double oldPrice,
+      int availableQunantity,
+      String imageUrl) async {
+    final newProduct = Product(
+      categoryId: categoryId,
+      name: name,
+      serialNumber: serialNumber,
+      description: description,
+      price: price,
+      oldPrice: oldPrice,
+      availableQunantity: availableQunantity,
+      imageUrl: imageUrl,
+    );
+    await _db.add(newProduct);
+    notifyListeners();
+  }
+
+  Future<void> deleteProduct(id) async {
+    await _db.doc(id).delete().then((value) {
+      _products.removeWhere((element) => element.id == id);
+    });
+    notifyListeners();
+  }
 }

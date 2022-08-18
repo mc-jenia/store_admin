@@ -85,7 +85,7 @@ class _NewCategoriesState extends State<NewCategories> {
                     elevation: 0,
                   ),
                   child: const Text('Add'),
-                )
+                ),
         ],
       ),
     );

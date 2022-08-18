@@ -28,7 +28,36 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (ctx) {
+                        return AlertDialog(
+                          title: const Text('Are you sure?'),
+                          content: const Text('Do you want to remove Product?'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(false);
+                              },
+                              child: const Text('NO'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Provider.of<ProductProvider>(context,
+                                        listen: false)
+                                    .deleteProduct(loadedProduct.id);
+                                Navigator.of(context).pop(true);
+                              },
+                              child: const Text('YES '),
+                            ),
+                          ],
+                        );
+                      },
+                    ).then((value) {
+                      Navigator.of(context).pop(context);
+                    });
+                  },
                   icon: const Icon(
                     Icons.delete,
                     color: CustomColor.pastelRed,
@@ -37,7 +66,7 @@ class ProductDetailScreen extends StatelessWidget {
               ],
               flexibleSpace: FlexibleSpaceBar(
                 background: Hero(
-                  tag: loadedProduct.id,
+                  tag: loadedProduct.id!,
                   child: Image.network(
                     loadedProduct.imageUrl,
                     fit: BoxFit.contain,
@@ -89,7 +118,8 @@ class ProductDetailScreen extends StatelessWidget {
                             const SizedBox(
                               width: 10,
                             ),
-                            loadedProduct.oldPrice == null
+                            loadedProduct.oldPrice == null ||
+                                    loadedProduct.oldPrice!.isNaN
                                 ? Container()
                                 : Text(
                                     '\$${loadedProduct.oldPrice!.toStringAsFixed(2)}',

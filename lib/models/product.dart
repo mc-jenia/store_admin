@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Product with ChangeNotifier {
-  final String id;
+  final String? id;
   final String categoryId;
   final String name;
   final String? serialNumber;
@@ -13,7 +13,7 @@ class Product with ChangeNotifier {
   final String imageUrl;
 
   Product({
-    required this.id,
+    this.id,
     required this.categoryId,
     required this.name,
     this.serialNumber,

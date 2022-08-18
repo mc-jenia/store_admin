@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:store_admin/models/product.dart';
 import 'package:store_admin/screens/product_detail_screen.dart';
 
+import '../providers/product_provider.dart';
 import '../styles/colors.dart';
 
 class ProductItem extends StatelessWidget {
@@ -24,7 +25,7 @@ class ProductItem extends StatelessWidget {
               SizedBox(
                 width: constraints.maxWidth * 0.3,
                 child: Hero(
-                  tag: data.id,
+                  tag: data.id!,
                   child: Image.network(
                     data.imageUrl,
                     fit: BoxFit.contain,
@@ -57,7 +58,7 @@ class ProductItem extends StatelessWidget {
                           SizedBox(
                             width: constraints.maxWidth * 0.05,
                           ),
-                          data.oldPrice == null
+                          data.oldPrice == null || data.oldPrice!.isNaN
                               ? Container()
                               : FittedBox(
                                   child: Text(
@@ -86,7 +87,40 @@ class ProductItem extends StatelessWidget {
                           ),
                           FittedBox(
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (ctx) {
+                                    return AlertDialog(
+                                      title: const Text('Are you sure?'),
+                                      content: const Text(
+                                          'Do you want to remove Product?'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop(false);
+                                          },
+                                          child: const Text('NO'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Provider.of<ProductProvider>(
+                                                    context,
+                                                    listen: false)
+                                                .deleteProduct(data.id)
+                                                .then(
+                                                  (value) =>
+                                                      Navigator.of(context)
+                                                          .pop(true),
+                                                );
+                                          },
+                                          child: const Text('YES '),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                               icon: const Icon(
                                 Icons.delete,
                                 color: CustomColor.pastelRed,

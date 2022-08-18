@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:store_admin/screens/more_screen.dart';
+import 'package:store_admin/screens/orders_screen.dart';
 
 import '../screens/categories_screen.dart';
 import '../styles/colors.dart';
@@ -17,8 +19,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
   final List<Widget> screens = [
     const HomeScreen(),
     const CategoriesScreen(),
-    const HomeScreen(),
-    const HomeScreen(),
+    const OrdersScreen(),
+    const MoreScreen(),
   ];
 
   @override
