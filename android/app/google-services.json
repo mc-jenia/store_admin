@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "802579808080",
+    "project_id": "store-bydevorder",
+    "storage_bucket": "store-bydevorder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802579808080:android:d3efc95bfa3122df047655",
+        "android_client_info": {
+          "package_name": "com.bydevorder.store_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802579808080-80k6thd6r19gu72sqdllnrb7kinit55t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZqzmpVm1DaAwFnW18Co7CU7JFbXBGjO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802579808080-80k6thd6r19gu72sqdllnrb7kinit55t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "802579808080-r0oaslo18rddgmi6kbee0e1flj1st7k7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bydevorder.storeAdmin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
